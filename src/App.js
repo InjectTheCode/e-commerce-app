@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import { Navbar, Sidebar, Footer } from "./components";
 
 import { Home, Products, SingleProduct, About, Cart, Error, Checkout, PrivateRoute } from "./pages";
@@ -18,6 +19,18 @@ function App() {
                 <Route path="*" element={<Error />} />
             </Routes>
             <Footer />
+            <ToastContainer
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </>
     );
 }

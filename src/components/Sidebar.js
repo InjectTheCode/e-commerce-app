@@ -10,14 +10,14 @@ import { links } from "../utils/constants";
 import { useUserContext } from "../context/user_context";
 
 const Sidebar = () => {
-    const { isSidebarOpen } = useProductsContext();
+    const { isSidebarOpen, closeSidebar } = useProductsContext();
 
     return (
         <SidebarContainer>
-            <aside className={isSidebarOpen ? "sidebar show-sidebar" : "sidebar"}>
+            <aside className={`${isSidebarOpen ? "sidebar show-sidebar" : "sidebar"}`}>
                 <div className="sidebar-header">
                     <img src={logo} alt="comft sloth" className="logo" />
-                    <button className="close-btn" type="button">
+                    <button className="close-btn" type="button" onClick={closeSidebar}>
                         <FaTimes />
                     </button>
                 </div>
@@ -26,12 +26,16 @@ const Sidebar = () => {
                         // in map method we can destruct the parametrs like that!
                         return (
                             <li key={id}>
-                                <Link to={url}>{text}</Link>
+                                <Link to={url} onClick={closeSidebar}>
+                                    {text}
+                                </Link>
                             </li>
                         );
                     })}
                     <li>
-                        <Link to="/checkout">checkout</Link>
+                        <Link to="/checkout" onClick={closeSidebar}>
+                            checkout
+                        </Link>
                     </li>
                 </ul>
                 <CartButtons />
