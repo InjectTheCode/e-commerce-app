@@ -4,14 +4,9 @@ import { useFilterContext } from "../context/filter_context";
 
 import GridView from "./GridView";
 import ListView from "./ListView";
-import Loading from "./Loading";
 
 const ProductList = () => {
-    const { filtered_products: products, grid_view, filter_loading } = useFilterContext();
-
-    if (filter_loading && products.length < 1) {
-        return <Loading />;
-    }
+    const { filtered_products: products, grid_view } = useFilterContext();
 
     if (products.length < 1) {
         return <H4>Sorry, no products matched your search...</H4>;
