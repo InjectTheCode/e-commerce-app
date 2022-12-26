@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { FaCheck } from "react-icons/fa";
@@ -12,6 +12,8 @@ import AmountButtons from "./AmountButtons";
 
 const AddToCart = ({ product }) => {
     const { id, stock, colors } = product;
+    const { addToCart } = useCartContext();
+
     const [maincolor, setMainColor] = useState(colors[0]);
     const [amount, setAmount] = useState(1);
     const [warning, setWarning] = useState(false);
@@ -85,7 +87,11 @@ const AddToCart = ({ product }) => {
             </div>
             <div className="btn-container">
                 <AmountButtons amount={amount} increase={increase} decrease={decrease} />
-                <Link to="/cart" className="btn">
+                <Link
+                    to="/cart"
+                    className="btn"
+                    onClick={() => addToCart(id, maincolor, amount, product)}
+                >
                     add to cart
                 </Link>
             </div>
