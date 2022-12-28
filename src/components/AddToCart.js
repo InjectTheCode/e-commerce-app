@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -16,13 +16,6 @@ const AddToCart = ({ product }) => {
 
     const [maincolor, setMainColor] = useState(colors[0]);
     const [amount, setAmount] = useState(1);
-    const [warning, setWarning] = useState(false);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setWarning(false);
-        }, 5000);
-    }, [warning]);
 
     const increase = () => {
         setAmount((oldAmount) => {
