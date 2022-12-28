@@ -7,6 +7,9 @@ const ErrorPage = () => {
             <section>
                 <h1>404</h1>
                 <h3>Sorry, the page you tried cannot be found!</h3>
+                <h4>
+                    if you are looking for <span>/Checkout</span> you have to login
+                </h4>
                 <Link to="/" className="btn">
                     back home
                 </Link>
@@ -27,6 +30,14 @@ const Wrapper = styled.main`
     h3 {
         text-transform: none;
         margin-bottom: 2rem;
+    }
+    h4 {
+        text-transform: none;
+        margin-bottom: 2rem;
+    }
+    h4 span {
+        text-decoration: underline;
+        font-weight: bolder;
     }
 `;
 

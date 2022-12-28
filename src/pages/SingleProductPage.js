@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams, useHistory, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -22,15 +22,14 @@ const SingleProductPage = () => {
 
     useEffect(() => {
         fetchSingleProduct(`${url}${id}`);
-    }, [id]);
 
-    useEffect(() => {
         if (error) {
             setTimeout(() => {
                 navigate("/");
             }, 3000);
         }
-    }, [error]);
+        // eslint-disable-next-line
+    }, [id, error]);
 
     if (loading) {
         return <Loading />;
